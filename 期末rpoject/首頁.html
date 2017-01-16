@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+  <html>
+    <head>
+	  <title>中興美食地圖</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <style>
+	  body {
+       display: flex;
+       min-height: 100vh;
+       flex-direction: column;
+     }
+
+     main {
+       flex: 1 0 auto;
+     }
+  </style>
+    </head>
+	<script>
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://emma.pixnet.cc/mainpage/blog/categories/hot_weekly/26?page=1&per_page=10&api_version=2&format=json";
+
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var myArr = JSON.parse(xmlhttp.responseText);
+			myFunction(myArr);
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	function myFunction(arr)
+	{   
+	    var data = arr.articles;
+		var str = "";
+		var i,j;
+		for(i=0;i<data.length;i++)
+        { 
+			str += '<li class="collection-item avatar">';
+			str += '<img src="'+ data[i].thumb +'" alt="" class="circle">';
+			str += '<span class="title">' + data[i].title + '</span>';
+			if ( data[i].tags.length != 0 )
+			{
+				
+				str += '<p>Tags: ' ;
+				for (j = 0; j < data[i].tags.length; j++) {
+					str += data[i].tags[j].tag + ', ';
+				}
+				str += '</p>';
+			}
+			
+			str += '<a target="_blank" href="' + data[i].link + '" class="secondary-content"><i class="material-icons">language</i></a>';
+			str += '</li>';
+		}		
+		document.getElementById("demo").innerHTML = str;
+	}
+	</script>
+    <body onload="f()">
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <script type="text/javascript" src="js/main.js"></script>
+
+	  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">中興大學美食拼圖</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html"></a></li>
+        <li><a href="badges.html"></a></li>
+        <li><a href="#last">關於本站</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#test1">中興大學周邊</a></li>
+		<li class="tab"><a href="#test2">中興大學美食影片</a></li>
+        <li class="tab"><a href="#test3">痞客邦近期熱門推薦</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="test1" class="col s12">
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/13103511_1581704022121274_5610495128950961738_n.jpg?oh=4990d14c3e4e6cd49033b310830fa8f9&oe=59133DD3"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>小慢慢。2號店</h3>
+          <h5 class="light grey-text text-lighten-3">義大利麵、法式吐司</h5>
+        </div>
+      </li>
+      <li>
+        <img src="images/韓村正統韓式料理_銅板烤肉.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>韓村正統韓式料理</h3>
+          <h5 class="light grey-text text-lighten-3">烤肉飯、炒馬麵</h5>
+        </div>
+      </li>
+      <li>
+        <img src="images/讚不絕口風味小火鍋興大店.jpg"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>讚不絕口風味小火鍋興大店</h3>
+          <h5 class="light grey-text text-lighten-3">自助飲料機、小美冰淇淋吃到飽</h5>
+        </div>
+      </li>
+	   <li>
+        <img src="http://farm4.staticflickr.com/3681/9645795022_71cab1278c_o.jpg?oh=4990d14c3e4e6cd49033b310830fa8f9&oe=59133DD3"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>上豪燒臘快餐</h3>
+          <h5 class="light grey-text text-lighten-3">叉燒、鴨肉、油雞</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://iphoto.ipeen.com.tw/photo/comment/0/7/1/cm20121221_303337_569822_da2c646836db4d914f3df0567271c56b338.jpg"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>鵝肉全</h3>
+          <h5 class="light grey-text text-lighten-3">鴨肉飯、傳統小菜</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://iphoto.ipeen.com.tw/photo/comment/2/3/3/cm20130105_303337_590770_981bf9bd7804b8003d0e44bccb22d7f1269.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>揚州炒飯</h3>
+          <h5 class="light grey-text text-lighten-3">炒飯、燴飯、鍋燒</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="row">
+    <div class="col s12"><h5 class="center-align"><div class="card-panel purple lighten-2">大門口</div></h5></div>
+ </div>
+  
+<div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/韓村正統韓式料理.jpg">
+              <span class="card-title">韓村正統韓式料理</span>
+            </div>
+            <div class="card-content">
+              <p>CP值蠻高的一家料理，大推烤肉飯、炒馬麵，大家有機會可以試試呦!</p>
+            </div>
+            <div class="card-action">
+              <a href="#map1" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker2()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      韓式料理
+
+停車場    路邊停車
+
+價格範圍  $$$
+
+專長      提供午餐、晚餐
+
+營業時間  週三至週一11:00–14:00, 16:30–21:00
+
+
+
+
+
+</pre>
+<a target="_blank" href="http://nanacobaby.pixnet.net/blog/post/50310802-%5B%E5%8F%B0%E4%B8%AD%5D%E9%9F%93%E6%9D%91%E6%AD%A3%E7%B5%B1%E9%9F%93%E5%BC%8F%E6%96%99%E7%90%86%EF%BD%9E%E4%B8%AD%E8%88%88%E5%A4%A7%E5%AD%B8%E7%BE%8E%E9%A3%9F-%E8%BF%91%E5%BF%A0"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div>  
+	  
+<div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/10730784_1541003469477609_7449923049015333608_n.jpg?oh=f5f0c5703bf34ff9a5a8f04d9d423eb8&oe=58DC0733">
+              <span class="card-title">讚不絕口風味小火鍋</span>
+            </div>
+            <div class="card-content">
+              <p>讚不絕口風味小火鍋（中興店），自助飲料機、小美冰淇淋吃到飽，心動了嗎？等您一同來享用美食！*^O^*</p>
+            </div>
+            <div class="card-action">
+              <a href="#map1" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker3()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      火鍋料理
+
+停車場    路邊停車
+
+價格範圍  $$$
+
+專長      提供午餐、晚餐和飲料
+
+營業時間  週一至周日11:00~21:30
+
+
+
+
+
+</pre>
+<a target="_blank" href="https://www.facebook.com/%E8%AE%9A%E4%B8%8D%E7%B5%95%E5%8F%A3-%E4%B8%AD%E8%88%88%E5%BA%97-1518232838421339/"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div> 	
+
+<div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/小慢慢。2號店.jpg">
+              <span class="card-title">小慢慢。2號店</span>
+            </div>
+            <div class="card-content">
+              <p>哈囉！ 這裡是小慢慢2店，這裡除了有［ 小慢慢 pasta 義大利麵] 的招牌義大利麵，還有法式吐司等等我們認真投注料理的餐點喔~</p>
+            </div>
+            <div class="card-action">
+			    <a href="#map1" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker1()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      無國界料理
+
+停車場    路邊停車停車場
+
+價格範圍  $$$
+
+專長      提供早餐、午餐、晚餐和飲料
+
+服務      接受預約
+          歡迎散客
+          適合團體聚餐
+          適合兒童
+          外帶
+		  
+</pre>
+<a target="_blank" href="https://www.facebook.com/XiaoManManNumber2/"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div> 
+
+	  <div class="container" id="map1" style="height:500px;width:1200px"></div>
+	    <div class="row">
+    <div class="col s12"><h5 class="center-align"><div class="card-panel red lighten-1">女宿街</div></h5></div>
+ </div>
+	  <div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/上豪燒臘快餐.jpg">
+              <span class="card-title">上豪燒臘快餐</span>
+            </div>
+            <div class="card-content">
+              <p>鴨腿飯常秒殺，菜色也好吃，cp值超高的一家店!!</p>
+            </div>
+            <div class="card-action">
+              <a href="#map2" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker4()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      燒臘快餐
+
+停車場    路邊停車
+
+價格範圍  $$$
+
+專長      提供午餐、晚餐
+
+營業時間  週一至週日11:30~14:00/17:30~19:00
+
+
+
+
+
+</pre>
+<a target="_blank" href="http://www.dtmsimon.com/2011/02/sanhow.html"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div>  
+	  
+<div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://iphoto.ipeen.com.tw/photo/comment/0/7/1/cm20121221_303337_569822_0dbd3e920805dd5caab5bf4e59eddd74415.jpg">
+              <span class="card-title">鵝肉全</span>
+            </div>
+            <div class="card-content">
+              <p>目前已全面改賣鴨肉料理，覺得小菜很好吃，大家可以試試哦!!</p>
+            </div>
+            <div class="card-action">
+              <a href="#map2" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker5()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      鴨肉料理
+
+停車場    路邊停車
+
+價格範圍  $$$
+
+專長      提供午餐
+
+營業時間  週一至週五11:00~14:00
+
+特色      每月1日全面打8折
+
+
+
+</pre>
+<a target="_blank" href="http://heilung.pixnet.net/blog/post/84791732-%E9%B5%9D%E8%82%89%E5%85%A8-%E5%A4%AB%E5%A6%BB%E5%8D%88%E9%A4%90"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div> 	
+
+<div class="row" style="float:left">
+        <div class="col s12 m7">
+          <div class="card large" style="width:420px">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://iphoto.ipeen.com.tw/photo/comment/2/3/3/cm20130105_303337_590770_aed66a41dd0a9debdd834f592b703dc6578.jpg">
+              <span class="card-title">揚州炒飯</span>
+            </div>
+            <div class="card-content">
+              <p>動作很快的一家店，讓人不會等太久，很喜歡他們家的燴飯，大家可以去吃吃看呦!</p>
+            </div>
+            <div class="card-action">
+			    <a href="#map2" class="waves-effect waves-teal btn-flat" onclick="deleteMarkers();marker6()"><i class="material-icons left">location_on</i>location</a>
+            </div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">商家詳情<i class="material-icons right">close</i></span>
+<pre>
+美食      中式料理
+
+停車場    路邊停車
+
+價格範圍  NT$60以內
+
+專長      提供午餐、晚餐和飲料
+
+營業時間  週日至週五11:00~20:00
+          
+          
+          
+          
+		  
+</pre>
+<a target="_blank" href="http://www.ipeen.com.tw/comment/402332"><i class="material-icons left">queue</i>more information</a>
+    </div>
+          </div>
+        </div>
+      </div> 
+
+
+ 
+
+  
+
+
+
+
+<div class="container" id="map2" style="height:500px;width:1200px"></div>	  
+</div>
+
+  <div id="test3" class="col s12">
+  <div class="center-align" >
+      <h3 class="red-text text-darken-2">痞客邦美食推薦</h3>
+    </div>
+  <ul class="collection" id="demo">
+	  </ul>
+  </div>
+  
+    <div id="test2" class="col s12">
+	<div class="center-align" >
+      <h3 class="red-text text-darken-2">中興大學美食影片</h3>
+    </div>
+	<div class="card-panel hoverable">
+  <ul class="collection" id="VideoThumbs"><!-- 這裡會產生YouTube Thumbs列出影片 --></ul>
+  </div> 
+  </div>
+  
+  <footer class="page-footer" id="last">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">關於本站</h5>
+                <p class="grey-text text-lighten-4">使用metirializecss製作</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">相關連結</h5>
+                <ul>
+                  <li><a target="_blank" class="grey-text text-lighten-3" href="http://nchu.edu.tw/index1.php">NCHU</a></li>
+                  <li><a target="_blank" class="grey-text text-lighten-3" href="https://developers.google.com/maps/documentation/javascript/examples/marker-simple?hl=zh-tw">google map API</a></li>
+                  <li><a target="_blank" class="grey-text text-lighten-3" href="https://developer.pixnet.pro/#!/doc/pixnetApi/oauthApi">pixnet API</a></li>
+                  <li><a target="_blank" class="grey-text text-lighten-3" href="http://materializecss.com/">materializecss</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Text
+            </div>
+          </div>
+        </footer>
+<script>
+var map1,map2;
+var markers = [];
+function initMap() {
+  map1 = new google.maps.Map(document.getElementById('map1'), {
+    center: {lat: 24.125740, lng: 120.674244},
+    zoom: 17
+  });
+  map2 = new google.maps.Map(document.getElementById('map2'), {
+    center: {lat: 24.122371, lng: 120.680235},
+    zoom: 20
+  });
+}
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  setMapOnAll(null);
+  markers = [];
+}
+
+function marker1() {
+var marker1 = new google.maps.Marker({
+    position: {lat: 24.126213, lng: 120.673644},
+    map: map1,
+    title: '小慢慢 2號店'
+  });
+  markers.push(marker1);
+}
+function marker2() {
+var marker2 = new google.maps.Marker({
+    position: {lat: 24.125740, lng: 120.674244},
+    map: map1,
+    title: '韓村正統韓式料理'
+  });
+  markers.push(marker2);
+}
+function marker3() {
+var marker3 = new google.maps.Marker({
+    position: {lat: 24.124908, lng: 120.674754},
+    map: map1,
+    title: '讚不絕口風味小火鍋興大店'
+  });
+  markers.push(marker3);
+}
+function marker4() {
+var marker4 = new google.maps.Marker({
+    position: {lat: 24.122508, lng: 120.680757},
+    map: map2,
+    title: '上豪燒臘快餐'
+  });
+  markers.push(marker4);
+}
+function marker5() {
+var marker5 = new google.maps.Marker({
+    position: {lat: 24.122312, lng: 120.680106},
+    map: map2,
+    title: '鵝肉全'
+  });
+  markers.push(marker5);
+}
+function marker6() {
+var marker6 = new google.maps.Marker({
+    position: {lat: 24.122278, lng: 120.680588},
+    map: map2,
+    title: '揚州炒飯'
+  });
+  markers.push(marker6);
+}
+</script>   
+ <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script> 
+
+<script type="text/javascript">
+
+		var apiKey = "AIzaSyCIlwa-7d7qpKS0Nj5vhI7tb-0minC-qZ8";
+
+		function getVideos(pid, apiKey) {
+			// PlaylistItems: list 語法參見 https://developers.google.com/youtube/v3/docs/playlistItems/list
+			$.get("https://www.googleapis.com/youtube/v3/playlistItems", {
+				part: "snippet,contentDetails",
+				maxResults: 50,
+				playlistId: pid,
+				key: apiKey},
+				function (data) {
+					//document.getElementById("VideoThumbs").innerHTML += '<div style="color:red;">====================================================================================================================================================</div>';
+					// 傳回值參見 https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation
+					$.each(data.items, function (i, item) {
+						var str="";
+						//str += '<ul class="collection">';
+						str += '<li class="collection-item avatar">';
+						str += '<img src="'+ item.snippet.thumbnails.default.url  +'" alt="" class="circle" style="float:left;font-size:small;margin:5px;">';
+						str += '<span class="title">' + item.snippet.title + '</span>';
+						//str += '<p></p>';
+						str += '<a href="https://youtu.be/' + item.snippet.resourceId.videoId + '" class="secondary-content" " target="_blank"><i class="material-icons">grade</i></a>';
+						//str += '<a href="https://youtu.be/' + item.snippet.resourceId.videoId + '" target="_blank"><img src="' + item.snippet.thumbnails.default.url + '" /><br />' + item.snippet.title + '</a><br />';
+						//if (item.contentDetails.note !== undefined) str += '<a href="' + item.contentDetails.note + '" target="_blank">延伸閱讀</a><br />';
+						str += '</li>';
+						//str += '</ul>';
+						//str += '</div>';
+						document.getElementById("VideoThumbs").innerHTML += str;
+					})
+				}
+			);
+		}
+		
+		
+		getVideos("PLOpv-3iLkpesgnktGCVrveQr9P2I3VNs9", apiKey)	// @跑步科學  
+	</script>
+    </body>
+  </html>
